@@ -1,0 +1,25 @@
+# Folder build hasil compile NetBeans
+/build/
+**/build/
+
+# Semua file .class (hasil compile Java)
+*.class
+
+# File form backup dari NetBeans
+*.form~
+
+# Folder private NetBeans (opsional)
+nbproject/private/
+
+# Cache dan log
+*.log
+*.bak
+
+# File sistem (Windows, macOS, Linux)
+.DS_Store
+Thumbs.db
+
+# Jika pakai Maven atau Gradle
+/target/
+/dist/
+/out/
