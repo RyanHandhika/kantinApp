@@ -17,8 +17,8 @@ public class KantinApp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        authentication authentication = new authentication();
-        authentication.setVisible(true);
+        data_transaksi transaksi = new data_transaksi();
+        transaksi.setVisible(true);
         
     }
     
