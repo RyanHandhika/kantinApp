@@ -25,9 +25,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-              <Component id="btn_login" min="-2" pref="175" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <Component id="btn_login1" min="-2" pref="175" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <Component id="btn_register" min="-2" pref="175" max="-2" attributes="0"/>
+              <EmptySpace pref="154" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -35,9 +37,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-              <Component id="btn_login" min="-2" pref="127" max="-2" attributes="0"/>
-              <EmptySpace pref="140" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_login1" alignment="3" min="-2" pref="127" max="-2" attributes="0"/>
+                  <Component id="btn_register" alignment="3" min="-2" pref="127" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="259" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -57,9 +62,9 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="186" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -87,15 +92,26 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btn_login">
+    <Component class="javax.swing.JButton" name="btn_register">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/kantinapp/mahasiswa.png"/>
+          <Image iconType="3" name="/kantinapp/register.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Register"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_registerActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_login1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/kantinapp/login.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_loginActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_login1ActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
