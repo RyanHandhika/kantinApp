@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosed" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosed"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -47,7 +50,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txt_nama_menu" max="32767" attributes="0"/>
-                                              <Component id="combo_id_kategori" min="-2" pref="398" max="-2" attributes="0"/>
+                                              <Component id="combo_kode_kategori" min="-2" pref="398" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txt_kode_menu" min="-2" pref="398" max="-2" attributes="0"/>
                                       </Group>
@@ -100,7 +103,7 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_stok" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                  <Component id="combo_id_kategori" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
+                  <Component id="combo_kode_kategori" alignment="3" min="-2" pref="46" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -217,11 +220,17 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hapus Menu"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_hapusActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_kembali">
           <Properties>
             <Property name="text" type="java.lang.String" value="Kembali"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_kembaliActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -237,6 +246,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cari"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_cariActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <AuxValues>
@@ -256,6 +268,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tabel_data_menuMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -323,7 +338,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txt_stok">
     </Component>
-    <Component class="javax.swing.JComboBox" name="combo_id_kategori">
+    <Component class="javax.swing.JComboBox" name="combo_kode_kategori">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>

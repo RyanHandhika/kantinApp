@@ -45,7 +45,7 @@ Object tabel;
         (
             new Object[][] {},
             new String [] {"Kode Menu",
-                           "Id Kategori",
+                           "Kode Kategori",
                            "Nama menu",
                            "Deskripsi",
                            "Harga",
@@ -103,7 +103,7 @@ Object tabel;
     public void membersihkan_text()
     {
         txt_kode_menu.setText("");
-        combo_id_kategori.setSelectedItem("");
+        combo_kode_kategori.setSelectedItem("");
         txt_nama_menu.setText("");
         txt_deskripsi.setText("");
         txt_harga.setText("");
@@ -114,7 +114,7 @@ Object tabel;
     public void nonaktif_teks()
     {
         txt_kode_menu.setEnabled(false);
-        combo_id_kategori.setEnabled(false);
+        combo_kode_kategori.setEnabled(false);
         txt_nama_menu.setEnabled(false);
         txt_deskripsi.setEnabled(false);
         txt_harga.setEnabled(false);
@@ -125,7 +125,7 @@ Object tabel;
     public void aktif_text()
     {
         txt_kode_menu.setEnabled(true);
-        combo_id_kategori.setEnabled(true);
+        combo_kode_kategori.setEnabled(true);
         txt_nama_menu.setEnabled(true);
         txt_deskripsi.setEnabled(true);
         txt_harga.setEnabled(true);
@@ -138,12 +138,12 @@ Object tabel;
     {
         row = tabel_data_menu.getSelectedRow();
         txt_kode_menu.setText(tableModel.getValueAt(row, 0).toString());
-        combo_id_kategori.setSelectedItem(tableModel.getValueAt(row, 1).toString());
+        combo_kode_kategori.setSelectedItem(tableModel.getValueAt(row, 1).toString());
         txt_nama_menu.setText(tableModel.getValueAt(row, 2).toString());
         txt_deskripsi.setText(tableModel.getValueAt(row, 3).toString());
-        txt_harga.setText(tableModel.getValueAt(row, 1).toString());
-        txt_stok.setText(tableModel.getValueAt(row, 2).toString());
-        txt_gambar.setText(tableModel.getValueAt(row, 3).toString());
+        txt_harga.setText(tableModel.getValueAt(row, 4).toString());
+        txt_stok.setText(tableModel.getValueAt(row, 5).toString());
+        txt_gambar.setText(tableModel.getValueAt(row, 6).toString());
         btn_tambah.setEnabled(true);
         btn_edit.setEnabled(true);
         btn_hapus.setEnabled(true);
@@ -160,7 +160,7 @@ Object tabel;
             ResultSet res = stt.executeQuery("SELECT * FROM kategori_menu");
             while(res.next())
             {
-                combo_id_kategori.addItem(res.getString("nama_kategori"));
+                combo_kode_kategori.addItem(res.getString("kode_kategori"));
             }
         }
         catch(Exception e)
@@ -199,12 +199,17 @@ Object tabel;
         txt_nama_menu = new javax.swing.JTextField();
         txt_harga = new javax.swing.JTextField();
         txt_stok = new javax.swing.JTextField();
-        combo_id_kategori = new javax.swing.JComboBox();
+        combo_kode_kategori = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         txt_deskripsi = new javax.swing.JTextArea();
         txt_gambar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -232,8 +237,18 @@ Object tabel;
         btn_hapus.setBackground(new java.awt.Color(204, 0, 0));
         btn_hapus.setForeground(new java.awt.Color(255, 255, 255));
         btn_hapus.setText("Hapus Menu");
+        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusActionPerformed(evt);
+            }
+        });
 
         btn_kembali.setText("Kembali");
+        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_kembaliActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -271,6 +286,11 @@ Object tabel;
         btn_cari.setBackground(new java.awt.Color(0, 153, 255));
         btn_cari.setForeground(new java.awt.Color(255, 255, 255));
         btn_cari.setText("Cari");
+        btn_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cariActionPerformed(evt);
+            }
+        });
 
         tabel_data_menu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -283,6 +303,11 @@ Object tabel;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tabel_data_menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabel_data_menuMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabel_data_menu);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -336,7 +361,7 @@ Object tabel;
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(txt_nama_menu)
-                                                .addComponent(combo_id_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(txt_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(250, 250, 250)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,7 +399,7 @@ Object tabel;
                     .addComponent(jLabel3)
                     .addComponent(jLabel7)
                     .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(combo_id_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -395,16 +420,64 @@ Object tabel;
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
+        String kode_menu = txt_kode_menu.getText();
+        String kode_kategori = combo_kode_kategori.getSelectedItem().toString();
+        String nama_menu = txt_nama_menu.getText();
+        String deskripsi = txt_deskripsi.getText();
+        String harga = txt_harga.getText();
+        String stok = txt_stok.getText();
+        String gambar = txt_gambar.getText();
+        
+        if((kode_menu.isEmpty()) || (kode_kategori.isEmpty()) || (nama_menu.isEmpty()) || (deskripsi.isEmpty()) || (harga.isEmpty()) || (stok.isEmpty()) || (gambar.isEmpty()))
+        {
+            JOptionPane.showMessageDialog(null, "data tidak boleh kosong, silahkan dilengkapi");
+            txt_kode_menu.requestFocus();
+        }
+        else
+        {
+            try
+            {
+                Class.forName(driver);
+                Connection kon = DriverManager.getConnection(database, user, pass);
+                Statement stt = kon.createStatement();
+                String SQL = "UPDATE `menu` SET "
+                            + "`kode_menu`='" + kode_menu + "', "
+                            + "`kode_kategori`='" + kode_kategori + "', "
+                            + "`nama_menu`='" + nama_menu + "', "
+                            + "`deskripsi`='" + deskripsi + "', "
+                            + "`harga`='" + harga + "', "
+                            + "`stok`='" + stok + "', "
+                            + "`gambar`='" + gambar + "' "
+                            + "WHERE `kode_menu`='" + tableModel.getValueAt(row, 0).toString() + "';";
+                stt.executeUpdate(SQL);
+                data[0] = kode_menu;
+                data[1] = kode_kategori;
+                data[2] = nama_menu;
+                data[3] = deskripsi;
+                data[4] = harga;
+                data[5] = stok;
+                data[6] = gambar;
+                tableModel.removeRow(row);
+                tableModel.insertRow(row, data);
+                stt.close();
+                kon.close();
+                membersihkan_text();
+            }
+            catch(Exception ex)
+            {
+                System.err.println(ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
         // TODO add your handling code here:
-        String data[] = new String[5];
+        String data[] = new String[7];
         
-        if((txt_kode_menu.getText().isEmpty()) || (combo_id_kategori.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
+        if((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty())|| (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_pelanggan.requestFocus();
+            txt_kode_menu.requestFocus();
         }
         else
         {
@@ -413,17 +486,23 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "INSERT INTO pelanggan(kode_pelanggan," + "nama," + "telp," + "alamat)"
+            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar)"
                     + "VALUES"
-                    + "( '" + txt_kode_pelanggan.getText() + "', "
-                    + "'"+ txt_nama.getText() + "', "
-                    + "'" + txt_telp.getText() + "', "
-                    + "'" + txt_alamat.getText() + "')";
+                    + "( '" + txt_kode_menu.getText() + "', "
+                    + "'"+ combo_kode_kategori.getSelectedItem() + "', "
+                    + "'" + txt_nama_menu.getText() + "', "
+                    + "'" + txt_deskripsi.getText() + "', "
+                    + "'" + txt_harga.getText() + "', "
+                    + "'" + txt_stok.getText() + "', "
+                    + "'" + txt_gambar.getText() + "')";
             stt.executeUpdate(SQL);
-            data[0] = txt_kode_pelanggan.getText();
-            data[1] = txt_nama.getText();
-            data[2] = txt_telp.getText();
-            data[3] = txt_alamat.getText();
+            data[0] = txt_kode_menu.getText();
+            data[1] = combo_kode_kategori.getSelectedItem().toString();
+            data[2] = txt_nama_menu.getText();
+            data[3] = txt_deskripsi.getText();
+            data[4] = txt_harga.getText();
+            data[5] = txt_stok.getText();
+            data[6] = txt_gambar.getText();
             tableModel.insertRow(0, data);
             stt.close();
             kon.close();
@@ -436,6 +515,84 @@ Object tabel;
         }
         
     }//GEN-LAST:event_btn_tambahActionPerformed
+
+    private void tabel_data_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_data_menuMouseClicked
+        // TODO add your handling code here:
+        if(evt.getClickCount() == 1)
+        {
+            tampil_field();
+        }
+    }//GEN-LAST:event_tabel_data_menuMouseClicked
+
+    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database, user, pass);
+            Statement stt = kon.createStatement();
+            String SQL = "DELETE FROM menu "
+                    + "WHERE "
+                    + "kode_menu='"+tableModel.getValueAt(row, 0).toString()+"'";
+            stt.executeUpdate(SQL);
+            tableModel.removeRow(row);
+            stt.close();
+            kon.close();
+            membersihkan_text();
+        }
+        catch(Exception ex)
+        {
+            System.err.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_btn_hapusActionPerformed
+
+    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
+        // TODO add your handling code here:
+        dashboard dashboard = new dashboard();
+        dashboard.setVisible(true);
+    }//GEN-LAST:event_btn_kembaliActionPerformed
+
+    private void btn_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cariActionPerformed
+        // TODO add your handling code here:
+        // menghapus seluruh isi data didalam tabel
+        tableModel.setRowCount(0);
+        // gunakan query untuk mencari
+        try
+        {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database, user, pass);
+            Statement stt = kon.createStatement();
+            String SQL = "SELECT * FROM menu WHERE kode_menu="
+                    + "'" +txt_cari.getText()+ "'";
+            ResultSet res = stt.executeQuery(SQL);
+            while(res.next())
+            {
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                data[5] = res.getString(6);
+                data[6] = res.getString(7);
+                tableModel.addRow(data);
+            }
+            res.close();
+            stt.close();
+            kon.close();
+        }
+        catch(Exception ex)
+        {
+            System.err.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btn_cariActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        dashboard dashboard = new dashboard();
+        dashboard.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -478,7 +635,7 @@ Object tabel;
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_tambah;
-    private javax.swing.JComboBox combo_id_kategori;
+    private javax.swing.JComboBox combo_kode_kategori;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
