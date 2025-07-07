@@ -513,7 +513,7 @@ Object tabel;
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-        
+       
     }//GEN-LAST:event_btn_tambahActionPerformed
 
     private void tabel_data_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_data_menuMouseClicked
