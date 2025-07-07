@@ -75,9 +75,9 @@
                           <Component id="txt_email" alignment="0" max="32767" attributes="0"/>
                           <Component id="txt_password" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton1" min="-2" pref="112" max="-2" attributes="0"/>
+                              <Component id="btn_login" min="-2" pref="112" max="-2" attributes="0"/>
                               <EmptySpace pref="58" max="32767" attributes="0"/>
-                              <Component id="jButton2" min="-2" pref="173" max="-2" attributes="0"/>
+                              <Component id="btn_lupa_password" min="-2" pref="173" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -98,8 +98,8 @@
                       <Component id="txt_password" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton2" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="btn_lupa_password" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                          <Component id="btn_login" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="35" max="32767" attributes="0"/>
                   </Group>
@@ -165,15 +165,15 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txt_email">
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btn_login">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_loginActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btn_lupa_password">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lupa Password"/>
               </Properties>
