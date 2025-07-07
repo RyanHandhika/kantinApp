@@ -213,7 +213,11 @@
                 <Property name="text" type="java.lang.String" value="Kembali"/>
               </Properties>
               <Events>
+<<<<<<< HEAD
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_kembaliActionPerformed"/>
+=======
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+>>>>>>> 3d4d4fe5a85fc65df807ba36b2d50be0c1db1d0b
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_register">
@@ -221,7 +225,11 @@
                 <Property name="text" type="java.lang.String" value="Register"/>
               </Properties>
               <Events>
+<<<<<<< HEAD
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_registerActionPerformed"/>
+=======
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+>>>>>>> 3d4d4fe5a85fc65df807ba36b2d50be0c1db1d0b
               </Events>
             </Component>
           </SubComponents>

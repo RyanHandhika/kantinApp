@@ -129,6 +129,7 @@ public class authentication extends javax.swing.JFrame {
 
     private void btn_register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register1ActionPerformed
         // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btn_register1ActionPerformed
 
     /**
