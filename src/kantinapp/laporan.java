@@ -5,18 +5,95 @@
  */
 
 package kantinapp;
+import javax.swing.*;
+//fungsi import yang digunakan untuk SQL
+import java.sql.*;
+//fungsi import yang digunakan untuk Tanggal
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author MRHSCode
  */
 public class laporan extends javax.swing.JFrame {
+//deklarasi variabel
+koneksi dbsetting;
+String driver, database, user, pass;
+Object tabel;
 
     /**
      * Creates new form laporan
      */
     public laporan() {
         initComponents();
+        
+        dbsetting = new koneksi();
+        driver = dbsetting.SettingPanel("DBDriver");
+        database = dbsetting.SettingPanel("DBDatabase");
+        user = dbsetting.SettingPanel("DBUsername");
+        pass = dbsetting.SettingPanel("DBPassword");
+        tabel_laporan.setModel(tableModel);
+        
+        settableload();
+    }
+    
+    private javax.swing.table.DefaultTableModel tableModel = getDefaultTableModel();
+    private javax.swing.table.DefaultTableModel getDefaultTableModel()
+    {
+        return new javax.swing.table.DefaultTableModel
+        (
+            new Object[][] {},
+            new String [] {"id",
+                           "Kode Menu",
+                           "tanggal",
+                           "Total Pendapatan",
+                           "Total Transaksi"}
+        )
+        {
+            boolean[] canEdit = new boolean[]
+            {
+                false, false, false, false, false, false, false
+            };
+            
+            public boolean isCellEditTable(int rowIndex, int columnIndex)
+            {
+                return canEdit[columnIndex];
+            }
+        };
+
+    }
+    
+    String data[] = new String[5];
+    private void settableload()
+    {
+        String stat = "";
+        try
+        {
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database, user, pass);
+            Statement stt = kon.createStatement();
+            String SQL = "select * from laporan";
+            ResultSet res = stt.executeQuery(SQL);
+            while(res.next())
+            {
+                data[0] = res.getString(1);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
+                tableModel.addRow(data);
+            }
+            res.close();
+            stt.close();
+            kon.close();
+        }
+        catch(Exception ex)
+        {
+            System.err.println(ex.getMessage());
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+            System.exit(0);
+        }
     }
 
     /**
@@ -34,7 +111,7 @@ public class laporan extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabel_laporan = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -52,6 +129,11 @@ public class laporan extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel4.setText("Laporan Penjualan");
@@ -64,7 +146,7 @@ public class laporan extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabel_laporan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -75,7 +157,7 @@ public class laporan extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabel_laporan);
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton8.setText("Export Excel");
@@ -254,11 +336,16 @@ public class laporan extends javax.swing.JFrame {
 
     private void btn_KembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_KembaliActionPerformed
         // TODO add your handling code here:
-        dashboard dashboard = new dashboard();
-        dashboard.setVisible(true);
-        
+        dashboard dashboard_frame = new dashboard();
+        dashboard_frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_KembaliActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        dashboard dashboard_frame = new dashboard();
+        dashboard_frame.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -313,6 +400,6 @@ public class laporan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabel_laporan;
     // End of variables declaration//GEN-END:variables
 }

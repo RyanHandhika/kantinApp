@@ -32,7 +32,7 @@ public class authentication extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btn_register = new javax.swing.JButton();
         btn_login1 = new javax.swing.JButton();
-        btn_register1 = new javax.swing.JButton();
+        btn_keluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,11 +76,11 @@ public class authentication extends javax.swing.JFrame {
             }
         });
 
-        btn_register1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/register.png"))); // NOI18N
-        btn_register1.setText("Keluar");
-        btn_register1.addActionListener(new java.awt.event.ActionListener() {
+        btn_keluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/register.png"))); // NOI18N
+        btn_keluar.setText("Keluar");
+        btn_keluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_register1ActionPerformed(evt);
+                btn_keluarActionPerformed(evt);
             }
         });
 
@@ -95,7 +95,7 @@ public class authentication extends javax.swing.JFrame {
                 .addGap(39, 39, 39)
                 .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_register1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
@@ -106,7 +106,7 @@ public class authentication extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_login1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_register, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_register1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(288, Short.MAX_VALUE))
         );
 
@@ -115,22 +115,22 @@ public class authentication extends javax.swing.JFrame {
 
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         // TODO add your handling code here:
-        register register = new register();
-        register.setVisible(true);
+        register register_frame = new register();
+        register_frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_registerActionPerformed
 
     private void btn_login1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_login1ActionPerformed
         // TODO add your handling code here:
-        login login = new login();
-        login.setVisible(true);
+        login login_frame = new login();
+        login_frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_login1ActionPerformed
 
-    private void btn_register1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_register1ActionPerformed
+    private void btn_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_keluarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_btn_register1ActionPerformed
+    }//GEN-LAST:event_btn_keluarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,9 +168,9 @@ public class authentication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_keluar;
     private javax.swing.JButton btn_login1;
     private javax.swing.JButton btn_register;
-    private javax.swing.JButton btn_register1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
