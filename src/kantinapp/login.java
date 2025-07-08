@@ -5,18 +5,34 @@
  */
 
 package kantinapp;
+import javax.swing.*;
+//fungsi import yang digunakan untuk SQL
+import java.sql.*;
+//fungsi import yang digunakan untuk Tanggal
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
  * @author MRHSCode
  */
 public class login extends javax.swing.JFrame {
+//deklarasi variabel
+koneksi dbsetting;
+String driver, database, user, pass;
+Object tabel;
 
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
+        
+        dbsetting = new koneksi();
+        driver = dbsetting.SettingPanel("DBDriver");
+        database = dbsetting.SettingPanel("DBDatabase");
+        user = dbsetting.SettingPanel("DBUsername");
+        pass = dbsetting.SettingPanel("DBPassword");
     }
 
     /**
@@ -39,7 +55,12 @@ public class login extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
         btn_lupa_password = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
 
@@ -59,7 +80,7 @@ public class login extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(221, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(214, 214, 214))
         );
@@ -79,6 +100,11 @@ public class login extends javax.swing.JFrame {
         });
 
         btn_lupa_password.setText("Lupa Password");
+        btn_lupa_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lupa_passwordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,7 +122,7 @@ public class login extends javax.swing.JFrame {
                         .addComponent(btn_login, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(btn_lupa_password, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +157,7 @@ public class login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(169, 169, 169)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -150,10 +176,55 @@ public class login extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        dashboard dashboard = new dashboard();
-        dashboard.setVisible(true);
-        this.setVisible(false);
+        String email = txt_email.getText();
+        String password = txt_password.getText();
+        
+        if(email.isEmpty() || password.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Email dan password tidak boleh kosong!", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        try
+        {
+            Connection kon = DriverManager.getConnection(database, user, pass);
+            String SQL = "SELECT * FROM users WHERE email=? AND password=?";
+            PreparedStatement pst = kon.prepareStatement(SQL);
+            pst.setString(1, email);
+            pst.setString(2, password);
+            
+            ResultSet rs = pst.executeQuery();
+            
+            if(rs.next())
+            {
+                JOptionPane.showMessageDialog(this, "Login berhasil!");
+                dashboard dashboard_frame = new dashboard();
+                dashboard_frame.setVisible(true);
+                this.setVisible(false);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(this, "Email atau password yang anda masukkan tidak valid!", "Login gagal!", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(this, "Koneksi Gagal:" + e.getMessage());
+        }
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        authentication authentication_frame = new authentication();
+        authentication_frame.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void btn_lupa_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lupa_passwordActionPerformed
+        // TODO add your handling code here:
+        lupa_password lupa_password_frame = new lupa_password();
+        lupa_password_frame.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_lupa_passwordActionPerformed
 
     /**
      * @param args the command line arguments

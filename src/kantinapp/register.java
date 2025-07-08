@@ -47,6 +47,7 @@ Object tabel;
     {
         login login = new login();
         login.setVisible(true);
+        this.setVisible(false);
     }
 
     /**
@@ -73,8 +74,13 @@ Object tabel;
         btn_kembali = new javax.swing.JButton();
         btn_register = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(985, 737));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
 
@@ -230,40 +236,69 @@ Object tabel;
     private void btn_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registerActionPerformed
         // TODO add your handling code here:
         String data[] = new String[5];
-        
-        if((txt_username.getText().isEmpty()) || (txt_nama_kantin.getText().isEmpty()) || (txt_email.getText().isEmpty()) || (txt_password.getText().isEmpty()))
-        {
-            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
+        String username = txt_username.getText();
+        String password = txt_password.getText();
+        String nama_kantin = txt_nama_kantin.getText();
+        String email = txt_email.getText();
+
+        if (username.isEmpty() || password.isEmpty() || nama_kantin.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silakan lengkapi.");
             txt_username.requestFocus();
-        }
-        else
-        {
-            try
-            {
-            Class.forName(driver);
-            Connection kon = DriverManager.getConnection(database, user, pass);
-            Statement stt = kon.createStatement();
-            String SQL = "INSERT INTO users(username," + "password," + "nama_kantin," + "email," + "role)"
-                    + "VALUES"
-                    + "( '" + txt_username.getText() + "', "
-                    + "'"+ txt_password.getText()+ "', "
-                    + "'" + txt_nama_kantin.getText() + "', "
-                    + "'" + txt_email.getText()+ "', "
-                    + "'pengguna')";
-            stt.executeUpdate(SQL);
-            data[0] = txt_username.getText();
-            data[1] = txt_password.getText();
-            data[2] = txt_nama_kantin.getText();
-            data[3] = txt_email.getText();
-            data[4] = "pemgguna";
-            stt.close();
-            kon.close();
-            membersihkan_text();
-            halaman_login();
-            }
-            catch(Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            try {
+                Class.forName(driver);
+                Connection kon = DriverManager.getConnection(database, user, pass);
+
+                // Cek apakah username atau email sudah ada
+                String cekSQL = "SELECT * FROM users WHERE username = ? OR email = ?";
+                PreparedStatement cekStmt = kon.prepareStatement(cekSQL);
+                cekStmt.setString(1, username);
+                cekStmt.setString(2, email);
+
+                ResultSet rs = cekStmt.executeQuery();
+
+                if (rs.next()) {
+                    String duplikat = "";
+
+                    if (username.equals(rs.getString("username"))) {
+                        duplikat += "Username sudah digunakan. ";
+                    }
+
+                    if (email.equals(rs.getString("email"))) {
+                        duplikat += "Email sudah terdaftar.";
+                    }
+
+                    JOptionPane.showMessageDialog(null, duplikat, "Duplikat Data", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    // Lanjutkan insert
+                    String SQL = "INSERT INTO users (username, password, nama_kantin, email, role) VALUES (?, ?, ?, ?, ?)";
+                    PreparedStatement insertStmt = kon.prepareStatement(SQL);
+                    insertStmt.setString(1, username);
+                    insertStmt.setString(2, password);
+                    insertStmt.setString(3, nama_kantin);
+                    insertStmt.setString(4, email);
+                    insertStmt.setString(5, "pengguna");
+
+                    insertStmt.executeUpdate();
+
+                    data[0] = username;
+                    data[1] = password;
+                    data[2] = nama_kantin;
+                    data[3] = email;
+                    data[4] = "pengguna";
+
+                    insertStmt.close();
+                    JOptionPane.showMessageDialog(null, "Registrasi berhasil!");
+                    membersihkan_text();
+                    halaman_login();
+                }
+
+                rs.close();
+                cekStmt.close();
+                kon.close();
+
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_registerActionPerformed
@@ -272,7 +307,14 @@ Object tabel;
         // TODO add your handling code here:
         authentication authentication_frame = new authentication();
         authentication_frame.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btn_kembaliActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        authentication authentication_frame = new authentication();
+        authentication_frame.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
