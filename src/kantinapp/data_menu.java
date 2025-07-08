@@ -525,7 +525,6 @@ Object tabel;
                 JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             }
         }
-       
     }//GEN-LAST:event_btn_tambahActionPerformed
 
     private void tabel_data_menuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabel_data_menuMouseClicked
@@ -560,9 +559,8 @@ Object tabel;
 
     private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
         // TODO add your handling code here:
-         dashboard dashboard = new dashboard();
-         dashboard.setVisible(true);
-        
+         dashboard dashboard_frame = new dashboard();
+         dashboard_frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_kembaliActionPerformed
 
@@ -604,8 +602,8 @@ Object tabel;
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        dashboard dashboard = new dashboard();
-        dashboard.setVisible(true);
+        dashboard dashboard_frame = new dashboard();
+        dashboard_frame.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     /**

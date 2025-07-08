@@ -519,15 +519,14 @@ Object tabel;
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        dashboard dashboard = new dashboard();
-        dashboard.setVisible(true);
+        dashboard dashboard_frame = new dashboard();
+        dashboard_frame.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
         // TODO add your handling code here:
-      dashboard dashboard = new dashboard();
-         dashboard.setVisible(true);
-        
+        dashboard dashboard_frame = new dashboard();
+        dashboard_frame.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_kembaliActionPerformed
 
