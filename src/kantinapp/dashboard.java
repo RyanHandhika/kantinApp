@@ -51,12 +51,17 @@ public class dashboard extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_menu = new javax.swing.JButton();
+        btn_pelanggan = new javax.swing.JButton();
+        btn_transaksi = new javax.swing.JButton();
+        btn_laporan = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(51, 102, 255));
 
@@ -204,7 +209,7 @@ public class dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,9 +239,9 @@ public class dashboard extends javax.swing.JFrame {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(244, 244, 244))
         );
         jPanel3Layout.setVerticalGroup(
@@ -259,43 +264,43 @@ public class dashboard extends javax.swing.JFrame {
                 .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
-        jButton1.setText("Total Menu");
-        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_menu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_menu.setText("Total Menu");
+        btn_menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_menu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_menuActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
-        jButton2.setText("Total Pelanggan");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_pelanggan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_pelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_pelanggan.setText("Total Pelanggan");
+        btn_pelanggan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_pelanggan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_pelangganActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
-        jButton3.setText("Total Transaksi");
-        jButton3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btn_transaksi.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_transaksi.setText("Total Transaksi");
+        btn_transaksi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_transaksi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btn_transaksiActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
-        jButton4.setText("Laporan");
-        jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_laporan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_laporan.setText("Laporan");
+        btn_laporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_laporan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_laporanActionPerformed(evt);
             }
         });
 
@@ -306,15 +311,15 @@ public class dashboard extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(134, 134, 134)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(138, 138, 138)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(159, Short.MAX_VALUE))
+                    .addComponent(btn_pelanggan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_laporan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(134, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1376, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,12 +327,12 @@ public class dashboard extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_laporan, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -336,37 +341,39 @@ public class dashboard extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_pelangganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pelangganActionPerformed
         // TODO add your handling code here:
-        data_pelanggan data_pelanggan = new data_pelanggan();
-        data_pelanggan.setVisible(true);
-        
+        data_pelanggan data_pelanggan_frame = new data_pelanggan();
+        data_pelanggan_frame.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_pelangganActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menuActionPerformed
         // TODO add your handling code here:
-         data_menu data_menu = new data_menu();
-         data_menu.setVisible(true);
-        
+        data_menu data_menu_frame = new data_menu();
+        data_menu_frame.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_menuActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btn_transaksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_transaksiActionPerformed
         // TODO add your handling code here:
-         data_transaksi data_transaksi = new data_transaksi();
-         data_transaksi.setVisible(true);
-        
+        data_transaksi data_transaksi_frame = new data_transaksi();
+        data_transaksi_frame.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn_transaksiActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_laporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_laporanActionPerformed
         // TODO add your handling code here:
-        laporan laporan = new laporan();
-        laporan.setVisible(true);
-        
+        laporan laporan_frame = new laporan();
+        laporan_frame.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_laporanActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        authentication authentication_frame = new authentication();
+        authentication_frame.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -404,10 +411,10 @@ public class dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btn_laporan;
+    private javax.swing.JButton btn_menu;
+    private javax.swing.JButton btn_pelanggan;
+    private javax.swing.JButton btn_transaksi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
