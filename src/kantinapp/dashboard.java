@@ -265,7 +265,7 @@ public class dashboard extends javax.swing.JFrame {
         );
 
         btn_menu.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/menu.png"))); // NOI18N
         btn_menu.setText("Total Menu");
         btn_menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_menu.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +275,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_pelanggan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_pelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_pelanggan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/pelanggan.png"))); // NOI18N
         btn_pelanggan.setText("Total Pelanggan");
         btn_pelanggan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_pelanggan.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +285,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_transaksi.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_transaksi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/transaksi.png"))); // NOI18N
         btn_transaksi.setText("Total Transaksi");
         btn_transaksi.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_transaksi.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +295,7 @@ public class dashboard extends javax.swing.JFrame {
         });
 
         btn_laporan.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kantinapp/login.png"))); // NOI18N
+        btn_laporan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/laporan.png"))); // NOI18N
         btn_laporan.setText("Laporan");
         btn_laporan.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_laporan.addActionListener(new java.awt.event.ActionListener() {
@@ -319,7 +319,7 @@ public class dashboard extends javax.swing.JFrame {
                     .addComponent(btn_laporan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(134, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1376, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

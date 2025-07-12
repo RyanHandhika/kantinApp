@@ -40,7 +40,7 @@
               <EmptySpace pref="134" max="32767" attributes="0"/>
           </Group>
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
-          <Component id="jPanel3" alignment="0" pref="1376" max="32767" attributes="0"/>
+          <Component id="jPanel3" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -424,7 +424,7 @@
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/kantinapp/login.png"/>
+          <Image iconType="3" name="/image/menu.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Total Menu"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -443,7 +443,7 @@
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/kantinapp/login.png"/>
+          <Image iconType="3" name="/image/pelanggan.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Total Pelanggan"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -462,7 +462,7 @@
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/kantinapp/login.png"/>
+          <Image iconType="3" name="/image/transaksi.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Total Transaksi"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -481,7 +481,7 @@
           <Font name="Tahoma" size="24" style="1"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/kantinapp/login.png"/>
+          <Image iconType="3" name="/image/laporan.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Laporan"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
