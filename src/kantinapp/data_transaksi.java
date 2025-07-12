@@ -624,23 +624,31 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        try
+        if((txt_kode_transaksi.getText().isEmpty()) || (txt_tgl_transaksi.getText().isEmpty()) || (txt_jumlah.getText().isEmpty()) || (txt_total.getText().isEmpty()))
         {
-            Class.forName(driver);
-            Connection kon = DriverManager.getConnection(database, user, pass);
-            Statement stt = kon.createStatement();
-            String SQL = "DELETE FROM transaksi "
-            + "WHERE "
-            + "kode_transaksi='"+tableModel.getValueAt(row, 0).toString()+"'";
-            stt.executeUpdate(SQL);
-            tableModel.removeRow(row);
-            stt.close();
-            kon.close();
-            membersihkan_text();
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
+            txt_kode_transaksi.requestFocus();
         }
-        catch(Exception ex)
+        else
         {
-            System.err.println(ex.getMessage());
+            try
+            {
+                Class.forName(driver);
+                Connection kon = DriverManager.getConnection(database, user, pass);
+                Statement stt = kon.createStatement();
+                String SQL = "DELETE FROM transaksi "
+                + "WHERE "
+                + "kode_transaksi='"+tableModel.getValueAt(row, 0).toString()+"'";
+                stt.executeUpdate(SQL);
+                tableModel.removeRow(row);
+                stt.close();
+                kon.close();
+                membersihkan_text();
+            }
+            catch(Exception ex)
+            {
+                System.err.println(ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btn_hapusActionPerformed
 
