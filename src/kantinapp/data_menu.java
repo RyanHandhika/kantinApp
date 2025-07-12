@@ -504,9 +504,9 @@ Object tabel;
                                     .addComponent(jLabel8))))
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(38, 38, 38)
+                            .addComponent(jLabel5)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(56, 56, 56)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -621,23 +621,31 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        try
+        if((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty())|| (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty()))
         {
-            Class.forName(driver);
-            Connection kon = DriverManager.getConnection(database, user, pass);
-            Statement stt = kon.createStatement();
-            String SQL = "DELETE FROM menu "
-                    + "WHERE "
-                    + "kode_menu='"+tableModel.getValueAt(row, 0).toString()+"'";
-            stt.executeUpdate(SQL);
-            tableModel.removeRow(row);
-            stt.close();
-            kon.close();
-            membersihkan_text();
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
+            txt_kode_menu.requestFocus();
         }
-        catch(Exception ex)
+        else
         {
-            System.err.println(ex.getMessage());
+            try
+            {
+                Class.forName(driver);
+                Connection kon = DriverManager.getConnection(database, user, pass);
+                Statement stt = kon.createStatement();
+                String SQL = "DELETE FROM menu "
+                        + "WHERE "
+                        + "kode_menu='"+tableModel.getValueAt(row, 0).toString()+"'";
+                stt.executeUpdate(SQL);
+                tableModel.removeRow(row);
+                stt.close();
+                kon.close();
+                membersihkan_text();
+            }
+            catch(Exception ex)
+            {
+                System.err.println(ex.getMessage());
+            }
         }
     }//GEN-LAST:event_btn_hapusActionPerformed
 
