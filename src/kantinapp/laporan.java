@@ -8,9 +8,20 @@ package kantinapp;
 import javax.swing.*;
 //fungsi import yang digunakan untuk SQL
 import java.sql.*;
+import java.text.MessageFormat;
 //fungsi import yang digunakan untuk Tanggal
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.print.attribute.standard.OrientationRequested;
+//fungsi import yang digunakan untuk expert pdf
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
+import java.awt.Desktop;
+import java.io.FilterOutputStream;
+import java.awt.print.PrinterException;
+import javax.swing.JTable;
+import java.text.MessageFormat;
+
 
 /**
  *
@@ -437,7 +448,21 @@ Object tabel;
 
     private void btn_exportpdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportpdfActionPerformed
         // TODO add your handling code here:
-        
+        try {
+            boolean selesai = tabel_laporan.print(
+            JTable.PrintMode.FIT_WIDTH,
+                    new MessageFormat("Data Laporan"),
+                    new MessageFormat("Halaman {0}"));
+            if (selesai) {
+                JOptionPane.showMessageDialog(null, "Data berhasil dikirim ke printer",
+                        "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            }else {
+                JOptionPane.showMessageDialog(null, "Proses print dibatalkan",
+                        "Batal", JOptionPane.WARNING_MESSAGE);
+            }
+        }catch (PrinterException e) {
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan saat print" + e.getMessage());
+        }
         
     }//GEN-LAST:event_btn_exportpdfActionPerformed
 
@@ -560,4 +585,8 @@ Object tabel;
     private javax.swing.JTable tabel_laporan;
     private javax.swing.JTextField txt_cari;
     // End of variables declaration//GEN-END:variables
+
+    private MessageFormat MessageFormat(String data_Laporan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

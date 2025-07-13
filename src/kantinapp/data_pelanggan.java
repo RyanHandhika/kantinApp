@@ -219,7 +219,7 @@ Object tabel;
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         btn_tambah.setBackground(new java.awt.Color(255, 255, 255));
-        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
+        btn_tambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/register.png"))); // NOI18N
         btn_tambah.setText("Tambah Pelanggan");
         btn_tambah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,8 +228,8 @@ Object tabel;
         });
 
         btn_edit.setBackground(new java.awt.Color(255, 255, 255));
-        btn_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
-        btn_edit.setText("Edit Pelanggan");
+        btn_edit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/edit.png"))); // NOI18N
+        btn_edit.setText("  Edit Pelanggan");
         btn_edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_editActionPerformed(evt);
@@ -237,7 +237,7 @@ Object tabel;
         });
 
         btn_hapus.setBackground(new java.awt.Color(255, 255, 255));
-        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/login.png"))); // NOI18N
+        btn_hapus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/hapus.png"))); // NOI18N
         btn_hapus.setText("Hapus Pelanggan");
         btn_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -246,7 +246,7 @@ Object tabel;
         });
 
         btn_kembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/kembali.png"))); // NOI18N
-        btn_kembali.setText("Kembali");
+        btn_kembali.setText(" Kembali");
         btn_kembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_kembaliActionPerformed(evt);
