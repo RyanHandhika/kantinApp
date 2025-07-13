@@ -504,9 +504,9 @@ Object tabel;
                                     .addComponent(jLabel8))))
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(56, 56, 56)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(38, 38, 38)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -582,7 +582,8 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar)"
+            Timestamp waktuSekarang = new Timestamp(new Date().getTime());
+            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar" + "created_at)"
                     + "VALUES"
                     + "( '" + txt_kode_menu.getText() + "', "
                     + "'"+ combo_kode_kategori.getSelectedItem() + "', "
@@ -590,7 +591,8 @@ Object tabel;
                     + "'" + txt_deskripsi.getText() + "', "
                     + "'" + txt_harga.getText() + "', "
                     + "'" + txt_stok.getText() + "', "
-                    + "'" + txt_gambar.getText() + "')";
+                    + "'" + txt_gambar.getText() + "', "
+                    + "" + waktuSekarang + ")";
             stt.executeUpdate(SQL);
             data[0] = txt_kode_menu.getText();
             data[1] = combo_kode_kategori.getSelectedItem().toString();
@@ -599,6 +601,7 @@ Object tabel;
             data[4] = txt_harga.getText();
             data[5] = txt_stok.getText();
             data[6] = txt_gambar.getText();
+            data[7] = waktuSekarang;
             tableModel.insertRow(0, data);
             stt.close();
             kon.close();
