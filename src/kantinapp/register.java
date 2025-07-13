@@ -441,7 +441,7 @@ Object tabel;
             try {
                 Class.forName(driver);
                 Connection kon = DriverManager.getConnection(database, user, pass);
-
+                Timestamp waktuSekarang = new Timestamp(new Date().getTime());
                 // Cek apakah username atau email sudah ada
                 String cekSQL = "SELECT * FROM users WHERE username = ? OR email = ?";
                 PreparedStatement cekStmt = kon.prepareStatement(cekSQL);
@@ -464,13 +464,15 @@ Object tabel;
                     JOptionPane.showMessageDialog(null, duplikat, "Duplikat Data", JOptionPane.WARNING_MESSAGE);
                 } else {
                     // Lanjutkan insert
-                    String SQL = "INSERT INTO users (username, password, nama_kantin, email, role) VALUES (?, ?, ?, ?, ?)";
+                    String SQL = "INSERT INTO users (username, password, nama_kantin, email, role, created_at, update_at) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement insertStmt = kon.prepareStatement(SQL);
                     insertStmt.setString(1, username);
                     insertStmt.setString(2, password);
                     insertStmt.setString(3, nama_kantin);
                     insertStmt.setString(4, email);
                     insertStmt.setString(5, "pengguna");
+                    insertStmt.setString(6, waktuSekarang.toString());
+                    insertStmt.setString(7, waktuSekarang.toString());
 
                     insertStmt.executeUpdate();
 

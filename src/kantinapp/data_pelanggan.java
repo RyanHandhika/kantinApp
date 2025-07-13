@@ -502,7 +502,7 @@ Object tabel;
 
     private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
         // TODO add your handling code here:
-        String data[] = new String[5];
+        String data[] = new String[4];
         
         if((txt_kode_pelanggan.getText().isEmpty()) || (txt_nama.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
         {
