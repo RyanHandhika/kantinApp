@@ -75,7 +75,6 @@ Object tabel;
         jLabel3 = new javax.swing.JLabel();
         txt_new_password = new javax.swing.JTextField();
         txt_confirm_password = new javax.swing.JTextField();
-        btn_kembali = new javax.swing.JButton();
         btn_ubah = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_email = new javax.swing.JTextField();
@@ -199,13 +198,6 @@ Object tabel;
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Confirm Password");
 
-        btn_kembali.setText("Kembali");
-        btn_kembali.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_kembaliActionPerformed(evt);
-            }
-        });
-
         btn_ubah.setText("Ubah");
         btn_ubah.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,12 +221,10 @@ Object tabel;
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(txt_new_password, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txt_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txt_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(73, 73, 73))
         );
         jPanel2Layout.setVerticalGroup(
@@ -254,9 +244,7 @@ Object tabel;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_confirm_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_kembali, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btn_ubah, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -315,13 +303,6 @@ Object tabel;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_kembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_kembaliActionPerformed
-        // TODO add your handling code here:\authentication authentication_frame = new authentication();
-        register register_frame = new register();
-        register_frame.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btn_kembaliActionPerformed
 
     private void btn_ubahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ubahActionPerformed
         // TODO add your handling code here:
@@ -385,6 +366,9 @@ Object tabel;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        login login_frame = new login();
+        login_frame.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -423,7 +407,6 @@ Object tabel;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_kembali;
     private javax.swing.JButton btn_ubah;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
