@@ -536,6 +536,7 @@ Object tabel;
                 Class.forName(driver);
                 Connection kon = DriverManager.getConnection(database, user, pass);
                 Statement stt = kon.createStatement();
+                Timestamp waktuSekarang = new Timestamp(new Date().getTime());
                 String SQL = "UPDATE `menu` SET "
                             + "`kode_menu`='" + kode_menu + "', "
                             + "`kode_kategori`='" + kode_kategori + "', "
@@ -543,7 +544,8 @@ Object tabel;
                             + "`deskripsi`='" + deskripsi + "', "
                             + "`harga`='" + harga + "', "
                             + "`stok`='" + stok + "', "
-                            + "`gambar`='" + gambar + "' "
+                            + "`gambar`='" + gambar + "', "
+                            + "`update_at`='" + waktuSekarang + "' "
                             + "WHERE `kode_menu`='" + tableModel.getValueAt(row, 0).toString() + "';";
                 stt.executeUpdate(SQL);
                 data[0] = kode_menu;
@@ -583,7 +585,7 @@ Object tabel;
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
             Timestamp waktuSekarang = new Timestamp(new Date().getTime());
-            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar" + "created_at)"
+            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar," + "created_at," + "update_at)"
                     + "VALUES"
                     + "( '" + txt_kode_menu.getText() + "', "
                     + "'"+ combo_kode_kategori.getSelectedItem() + "', "
@@ -592,7 +594,8 @@ Object tabel;
                     + "'" + txt_harga.getText() + "', "
                     + "'" + txt_stok.getText() + "', "
                     + "'" + txt_gambar.getText() + "', "
-                    + "" + waktuSekarang + ")";
+                    + "'" + waktuSekarang + "', "
+                    + "'" + waktuSekarang + "')";
             stt.executeUpdate(SQL);
             data[0] = txt_kode_menu.getText();
             data[1] = combo_kode_kategori.getSelectedItem().toString();
@@ -601,7 +604,6 @@ Object tabel;
             data[4] = txt_harga.getText();
             data[5] = txt_stok.getText();
             data[6] = txt_gambar.getText();
-            data[7] = waktuSekarang;
             tableModel.insertRow(0, data);
             stt.close();
             kon.close();

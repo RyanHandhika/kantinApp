@@ -107,7 +107,6 @@ Object tabel;
         txt_kode_transaksi.setText("");
         combo_kode_menu.setSelectedItem("");
         combo_metode_pembayaran.setSelectedItem("");
-        txt_tgl_transaksi.setText("");
         combo_kode_pelanggan.setSelectedItem("");
         txt_jumlah.setText("");
         txt_total.setText("");
@@ -118,7 +117,6 @@ Object tabel;
         txt_kode_transaksi.setEnabled(false);
         combo_kode_menu.setEnabled(false);
         combo_metode_pembayaran.setEnabled(false);
-        txt_tgl_transaksi.setEnabled(false);
         combo_kode_pelanggan.setEnabled(false);
         txt_jumlah.setEnabled(false);
         txt_total.setEnabled(false);
@@ -129,7 +127,6 @@ Object tabel;
         txt_kode_transaksi.setEnabled(true);
         combo_kode_menu.setEnabled(true);
         combo_metode_pembayaran.setEnabled(true);
-        txt_tgl_transaksi.setEnabled(true);
         combo_kode_pelanggan.setEnabled(true);
         txt_jumlah.setEnabled(true);
         txt_total.setEnabled(true);
@@ -142,7 +139,6 @@ Object tabel;
         txt_kode_transaksi.setText(tableModel.getValueAt(row, 0).toString());
         combo_kode_menu.setSelectedItem(tableModel.getValueAt(row, 1).toString());
         combo_metode_pembayaran.setSelectedItem(tableModel.getValueAt(row, 2).toString());
-        txt_tgl_transaksi.setText(tableModel.getValueAt(row, 3).toString());
         combo_kode_pelanggan.setSelectedItem(tableModel.getValueAt(row, 4).toString());
         txt_jumlah.setText(tableModel.getValueAt(row, 5).toString());
         txt_total.setText(tableModel.getValueAt(row, 6).toString());
@@ -215,9 +211,6 @@ Object tabel;
         txt_jumlah = new javax.swing.JTextField();
         combo_kode_menu = new javax.swing.JComboBox();
         combo_metode_pembayaran = new javax.swing.JComboBox();
-        jLabel8 = new javax.swing.JLabel();
-        txt_tgl_transaksi = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         combo_kode_pelanggan = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -319,18 +312,12 @@ Object tabel;
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel7.setText("Total");
 
-        combo_metode_pembayaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "tunai", "saldo" }));
+        combo_metode_pembayaran.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "tunai", "non tunai" }));
         combo_metode_pembayaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 combo_metode_pembayaranActionPerformed(evt);
             }
         });
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("Tanggal Transaksi");
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("yyyy-mm-dd");
 
         jPanel4.setBackground(new java.awt.Color(44, 118, 149));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -485,36 +472,26 @@ Object tabel;
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel4)
-                                                    .addComponent(jLabel8))
+                                                .addComponent(jLabel4)
                                                 .addGap(60, 60, 60)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(combo_metode_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txt_tgl_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(combo_metode_pembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel3)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(combo_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addComponent(txt_kode_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(82, 82, 82)
+                                                .addComponent(jLabel7))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(81, 81, 81)
+                                                .addComponent(jLabel6)))
+                                        .addGap(111, 111, 111)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(82, 82, 82)
-                                                        .addComponent(jLabel7))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(81, 81, 81)
-                                                        .addComponent(jLabel6)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(txt_jumlah, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                                                    .addComponent(txt_total)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel9)
-                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                            .addComponent(txt_jumlah, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -528,7 +505,7 @@ Object tabel;
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_kode_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -546,12 +523,7 @@ Object tabel;
                     .addComponent(jLabel4)
                     .addComponent(jLabel7)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_tgl_transaksi, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(71, 71, 71)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -629,7 +601,7 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        if((txt_kode_transaksi.getText().isEmpty()) || (txt_tgl_transaksi.getText().isEmpty()) || (txt_jumlah.getText().isEmpty()) || (txt_total.getText().isEmpty()))
+        if((txt_kode_transaksi.getText().isEmpty()) || (txt_jumlah.getText().isEmpty()) || (txt_total.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
             txt_kode_transaksi.requestFocus();
@@ -662,12 +634,11 @@ Object tabel;
         String kode_transaksi = txt_kode_transaksi.getText();
         String kode_menu = combo_kode_menu.getSelectedItem().toString();
         String metode_pembayaran = combo_metode_pembayaran.getSelectedItem().toString();
-        String tanggal_transaksi = txt_tgl_transaksi.getText();
         String kode_pelanggan = combo_kode_pelanggan.getSelectedItem().toString();
         String jumlah = txt_jumlah.getText();
         String total = txt_total.getText();
 
-        if((kode_transaksi.isEmpty()) || (tanggal_transaksi.isEmpty()) || (jumlah.isEmpty()) || (total.isEmpty()))
+        if((kode_transaksi.isEmpty()) || (jumlah.isEmpty()) || (total.isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "data tidak boleh kosong, silahkan dilengkapi");
             txt_kode_transaksi.requestFocus();
@@ -679,20 +650,21 @@ Object tabel;
                 Class.forName(driver);
                 Connection kon = DriverManager.getConnection(database, user, pass);
                 Statement stt = kon.createStatement();
+                Timestamp waktuSekarang = new Timestamp(new Date().getTime());
                 String SQL = "UPDATE `transaksi` SET "
                 + "`kode_transaksi`='" + kode_transaksi + "', "
                 + "`kode_menu`='" + kode_menu + "', "
                 + "`metode_pembayaran`='" + metode_pembayaran + "', "
-                + "`tanggal_transaksi`='" + tanggal_transaksi + "', "
                 + "`kode_pelanggan`='" + kode_pelanggan + "', "
                 + "`jumlah`='" + jumlah + "', "
-                + "`total`='" + total + "' "
+                + "`total`='" + total + "', "
+                + "`update_at`='" + waktuSekarang + "' "
                 + "WHERE `kode_transaksi`='" + tableModel.getValueAt(row, 0).toString() + "';";
                 stt.executeUpdate(SQL);
                 data[0] = kode_transaksi;
                 data[1] = kode_menu;
                 data[2] = metode_pembayaran;
-                data[3] = tanggal_transaksi;
+                data[3] = tableModel.getValueAt(row, 3).toString();
                 data[4] = kode_pelanggan;
                 data[5] = jumlah;
                 data[6] = total;
@@ -713,7 +685,7 @@ Object tabel;
         // TODO add your handling code here:
         String data[] = new String[7];
 
-        if((txt_kode_transaksi.getText().isEmpty()) || (txt_tgl_transaksi.getText().isEmpty()) || (txt_jumlah.getText().isEmpty()) || (txt_total.getText().isEmpty()))
+        if((txt_kode_transaksi.getText().isEmpty()) || (txt_jumlah.getText().isEmpty()) || (txt_total.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
             txt_kode_transaksi.requestFocus();
@@ -725,20 +697,23 @@ Object tabel;
                 Class.forName(driver);
                 Connection kon = DriverManager.getConnection(database, user, pass);
                 Statement stt = kon.createStatement();
-                String SQL = "INSERT INTO transaksi(kode_transaksi," + "kode_menu," + "metode_pembayaran," + "tanggal_transaksi," + "kode_pelanggan," + "jumlah," + "total)"
+                Timestamp waktuSekarang = new Timestamp(new Date().getTime());
+                String SQL = "INSERT INTO transaksi(kode_transaksi," + "kode_menu," + "metode_pembayaran," + "tanggal_transaksi," + "kode_pelanggan," + "jumlah," + "total," + "created_at," + "update_at)"
                 + "VALUES"
                 + "( '" + txt_kode_transaksi.getText() + "', "
-                + "'"+ combo_kode_menu.getSelectedItem() + "', "
-                + "'"+ combo_metode_pembayaran.getSelectedItem() + "', "
-                + "'" + txt_tgl_transaksi.getText() + "', "
+                + "'" + combo_kode_menu.getSelectedItem() + "', "
+                + "'" + combo_metode_pembayaran.getSelectedItem() + "', "
+                + "'" + waktuSekarang + "', "
                 + "'" + combo_kode_pelanggan.getSelectedItem()+ "', "
                 + "'" + txt_jumlah.getText() + "', "
-                + "" + txt_total.getText() + ")";
+                + "" + txt_total.getText() + ", "
+                + "'" + waktuSekarang + "', "
+                + "'" + waktuSekarang + "')";
                 stt.executeUpdate(SQL);
                 data[0] = txt_kode_transaksi.getText();
                 data[1] = combo_kode_menu.getSelectedItem().toString();
                 data[2] = combo_metode_pembayaran.getSelectedItem().toString();
-                data[3] = txt_tgl_transaksi.getText();
+                data[3] = waktuSekarang.toString();
                 data[4] = combo_kode_pelanggan.getSelectedItem().toString();
                 data[5] = txt_jumlah.getText();
                 data[6] = txt_total.getText();
@@ -807,8 +782,6 @@ Object tabel;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -819,7 +792,6 @@ Object tabel;
     private javax.swing.JTextField txt_cari;
     private javax.swing.JTextField txt_jumlah;
     private javax.swing.JTextField txt_kode_transaksi;
-    private javax.swing.JTextField txt_tgl_transaksi;
     private javax.swing.JTextField txt_total;
     // End of variables declaration//GEN-END:variables
 }
