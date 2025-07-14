@@ -55,7 +55,7 @@ Object tabel;
         return new javax.swing.table.DefaultTableModel
         (
             new Object[][] {},
-            new String [] {"id",
+            new String [] {"kode_laporan",
                            "Kode Menu",
                            "tanggal",
                            "Total Pendapatan",
