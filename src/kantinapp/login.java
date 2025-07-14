@@ -361,6 +361,7 @@ Object tabel;
             
             if(rs.next())
             {
+                session.id_user = rs.getInt("id");
                 JOptionPane.showMessageDialog(this, "Login berhasil!");
                 dashboard dashboard_frame = new dashboard();
                 dashboard_frame.setVisible(true);

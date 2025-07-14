@@ -77,17 +77,17 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "select * from transaksi";
+            String SQL = "select * from transaksi where id_user = '" + session.id_user + "'";
             ResultSet res = stt.executeQuery(SQL);
             while(res.next())
             {
                 data[0] = res.getString(1);
-                data[1] = res.getString(2);
-                data[2] = res.getString(3);
-                data[3] = res.getString(4);
-                data[4] = res.getString(5);
-                data[5] = res.getString(6);
-                data[6] = res.getString(7);
+                data[1] = res.getString(3);
+                data[2] = res.getString(4);
+                data[3] = res.getString(5);
+                data[4] = res.getString(6);
+                data[5] = res.getString(7);
+                data[6] = res.getString(8);
                 tableModel.addRow(data);
             }
             res.close();
