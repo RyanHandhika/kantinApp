@@ -447,6 +447,7 @@ Object tabel;
                 Statement stt = kon.createStatement();
                 String SQL = "UPDATE `pelanggan` "
                         + "SET `kode_pelanggan`='"+kode_pelanggan+"',"
+                        + "`id_user`='"+session.id_user+"',"
                         + "`nama`='"+nama+"',"
                         + "`telp`='"+telp+"',"
                         + "`alamat`='"+alamat+"' "
@@ -516,9 +517,10 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "INSERT INTO pelanggan(kode_pelanggan," + "nama," + "telp," + "alamat)"
+            String SQL = "INSERT INTO pelanggan(kode_pelanggan," + "id_user," + "nama," + "telp," + "alamat)"
                     + "VALUES"
                     + "( '" + txt_kode_pelanggan.getText() + "', "
+                    + "'"+ session.id_user + "', "
                     + "'"+ txt_nama.getText() + "', "
                     + "'" + txt_telp.getText() + "', "
                     + "'" + txt_alamat.getText() + "')";

@@ -539,6 +539,7 @@ Object tabel;
                 Timestamp waktuSekarang = new Timestamp(new Date().getTime());
                 String SQL = "UPDATE `menu` SET "
                             + "`kode_menu`='" + kode_menu + "', "
+                            + "`id_user`='" + session.id_user + "', "
                             + "`kode_kategori`='" + kode_kategori + "', "
                             + "`nama_menu`='" + nama_menu + "', "
                             + "`deskripsi`='" + deskripsi + "', "
@@ -585,9 +586,10 @@ Object tabel;
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
             Timestamp waktuSekarang = new Timestamp(new Date().getTime());
-            String SQL = "INSERT INTO menu(kode_menu," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar," + "created_at," + "update_at)"
+            String SQL = "INSERT INTO menu(kode_menu," + "id_user," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar," + "created_at," + "update_at)"
                     + "VALUES"
                     + "( '" + txt_kode_menu.getText() + "', "
+                    + "'" + session.id_user + "', "
                     + "'"+ combo_kode_kategori.getSelectedItem() + "', "
                     + "'" + txt_nama_menu.getText() + "', "
                     + "'" + txt_deskripsi.getText() + "', "
