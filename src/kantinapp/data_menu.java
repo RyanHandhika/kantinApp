@@ -11,10 +11,34 @@ import java.sql.*;
 //fungsi import yang digunakan untuk Tanggal
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.ImageIcon;
+import java.awt.Image;
 /**
  *
  * @author MRHSCode
  */
+class ImageRenderer extends DefaultTableCellRenderer {
+    @Override
+    public void setValue(Object value) {
+        if (value != null && value instanceof String) {
+            String path = "/src/gambar_menu/" + value;
+            ImageIcon icon = new ImageIcon(path);
+            Image img = icon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+            setIcon(new ImageIcon(img));
+            setText("");
+        } else {
+            setIcon(null);
+            setText("No Image");
+        }
+    }
+}
+
 public class data_menu extends javax.swing.JFrame {
 //deklarasi variabel
 koneksi dbsetting;
@@ -27,12 +51,15 @@ Object tabel;
     public data_menu() {
         initComponents();
         
+        txt_gambar.setEditable(false);
+        txt_gambar.setBackground(java.awt.Color.LIGHT_GRAY);
         dbsetting = new koneksi();
         driver = dbsetting.SettingPanel("DBDriver");
         database = dbsetting.SettingPanel("DBDatabase");
         user = dbsetting.SettingPanel("DBUsername");
         pass = dbsetting.SettingPanel("DBPassword");
         tabel_data_menu.setModel(tableModel);
+        tabel_data_menu.getColumnModel().getColumn(6).setCellRenderer(new ImageRenderer());
         
         settableload();
         id_kategori();
@@ -168,6 +195,9 @@ Object tabel;
             JOptionPane.showMessageDialog(rootPane, e);
         }
     }
+    
+    private String pathGambar = "";
+    private String namaFileGambar = "";
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,6 +238,7 @@ Object tabel;
         btn_tampil_semua_data = new javax.swing.JButton();
         btn_cari = new javax.swing.JButton();
         txt_cari = new javax.swing.JTextField();
+        btn_pilih_gambar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -427,6 +458,13 @@ Object tabel;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btn_pilih_gambar.setText("...");
+        btn_pilih_gambar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_pilih_gambarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -464,11 +502,13 @@ Object tabel;
                                             .addComponent(jLabel7))
                                         .addComponent(jLabel6))
                                     .addGap(41, 41, 41)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txt_stok, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txt_gambar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(txt_gambar)
+                                            .addGap(4, 4, 4)
+                                            .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(42, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -481,27 +521,24 @@ Object tabel;
                         .addGap(49, 49, 49)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(108, 108, 108)
-                                .addComponent(txt_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(txt_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7)
-                                    .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6)
-                                    .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txt_nama_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel8))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txt_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_nama_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel8)
+                            .addComponent(txt_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -523,98 +560,135 @@ Object tabel;
         String harga = txt_harga.getText();
         String stok = txt_stok.getText();
         String gambar = txt_gambar.getText();
-        
-        if((kode_menu.isEmpty()) || (kode_kategori.isEmpty()) || (nama_menu.isEmpty()) || (deskripsi.isEmpty()) || (harga.isEmpty()) || (stok.isEmpty()) || (gambar.isEmpty()))
+
+        if (kode_menu.isEmpty() || kode_kategori.isEmpty() || nama_menu.isEmpty() ||
+            deskripsi.isEmpty() || harga.isEmpty() || stok.isEmpty() || gambar.isEmpty()) 
         {
-            JOptionPane.showMessageDialog(null, "data tidak boleh kosong, silahkan dilengkapi");
+            JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
             txt_kode_menu.requestFocus();
+            return;
         }
-        else
-        {
-            try
-            {
-                Class.forName(driver);
-                Connection kon = DriverManager.getConnection(database, user, pass);
-                Statement stt = kon.createStatement();
-                Timestamp waktuSekarang = new Timestamp(new Date().getTime());
-                String SQL = "UPDATE `menu` SET "
-                            + "`kode_menu`='" + kode_menu + "', "
-                            + "`id_user`='" + session.id_user + "', "
-                            + "`kode_kategori`='" + kode_kategori + "', "
-                            + "`nama_menu`='" + nama_menu + "', "
-                            + "`deskripsi`='" + deskripsi + "', "
-                            + "`harga`='" + harga + "', "
-                            + "`stok`='" + stok + "', "
-                            + "`gambar`='" + gambar + "', "
-                            + "`update_at`='" + waktuSekarang + "' "
-                            + "WHERE `kode_menu`='" + tableModel.getValueAt(row, 0).toString() + "';";
-                stt.executeUpdate(SQL);
-                data[0] = kode_menu;
-                data[1] = kode_kategori;
-                data[2] = nama_menu;
-                data[3] = deskripsi;
-                data[4] = harga;
-                data[5] = stok;
-                data[6] = gambar;
-                tableModel.removeRow(row);
-                tableModel.insertRow(row, data);
-                stt.close();
-                kon.close();
-                membersihkan_text();
+
+        try {
+            // Upload gambar baru jika ada file baru dipilih
+            if (pathGambar != null && !pathGambar.isEmpty()) {
+                File folder = new File("src/gambar_menu");
+                if (!folder.exists()) {
+                    folder.mkdirs();
+                }
+
+                File source = new File(pathGambar);
+                File dest = new File(folder, namaFileGambar);
+                Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
-            catch(Exception ex)
-            {
-                System.err.println(ex.getMessage());
-            }
+
+            // Update database
+            Class.forName(driver);
+            Connection kon = DriverManager.getConnection(database, user, pass);
+            Statement stt = kon.createStatement();
+            Timestamp waktuSekarang = new Timestamp(new Date().getTime());
+
+            String SQL = "UPDATE menu SET " +
+                         "kode_kategori='" + kode_kategori + "', " +
+                         "nama_menu='" + nama_menu + "', " +
+                         "deskripsi='" + deskripsi + "', " +
+                         "harga='" + harga + "', " +
+                         "stok='" + stok + "', " +
+                         "gambar='" + namaFileGambar + "', " +
+                         "update_at='" + waktuSekarang + "' " +
+                         "WHERE kode_menu='" + tableModel.getValueAt(row, 0).toString() + "'";
+
+            stt.executeUpdate(SQL);
+
+            // Update ke tabel
+            String[] data = new String[7];
+            data[0] = kode_menu;
+            data[1] = kode_kategori;
+            data[2] = nama_menu;
+            data[3] = deskripsi;
+            data[4] = harga;
+            data[5] = stok;
+            data[6] = namaFileGambar;
+
+            tableModel.removeRow(row);
+            tableModel.insertRow(row, data);
+
+            stt.close();
+            kon.close();
+            membersihkan_text();
+            JOptionPane.showMessageDialog(null, "Data berhasil diperbarui!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_editActionPerformed
 
     private void btn_tambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tambahActionPerformed
         // TODO add your handling code here:
         String data[] = new String[7];
-        
-        if((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty())|| (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty()))
+
+        if (txt_kode_menu.getText().isEmpty() || 
+            txt_nama_menu.getText().isEmpty() ||
+            txt_deskripsi.getText().isEmpty() ||
+            txt_harga.getText().isEmpty() || 
+            txt_stok.getText().isEmpty() ||
+            txt_gambar.getText().isEmpty()) 
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
             txt_kode_menu.requestFocus();
+            return;
         }
-        else
-        {
-            try
-            {
+
+        try {
+            // Pastikan folder image/ ada sebelum copy
+            File folder = new File("src/gambar_menu");
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+
+            // Salin file gambar ke folder image/
+           File source = new File(pathGambar);
+           File dest = new File(folder, namaFileGambar);
+           Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+            // Simpan ke database
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
             Timestamp waktuSekarang = new Timestamp(new Date().getTime());
-            String SQL = "INSERT INTO menu(kode_menu," + "id_user," + "kode_kategori," + "nama_menu," + "deskripsi," + "harga," + "stok," + "gambar," + "created_at," + "update_at)"
-                    + "VALUES"
-                    + "( '" + txt_kode_menu.getText() + "', "
-                    + "'" + session.id_user + "', "
-                    + "'"+ combo_kode_kategori.getSelectedItem() + "', "
-                    + "'" + txt_nama_menu.getText() + "', "
-                    + "'" + txt_deskripsi.getText() + "', "
-                    + "'" + txt_harga.getText() + "', "
-                    + "'" + txt_stok.getText() + "', "
-                    + "'" + txt_gambar.getText() + "', "
-                    + "'" + waktuSekarang + "', "
-                    + "'" + waktuSekarang + "')";
+
+            String SQL = "INSERT INTO menu(kode_menu, id_user, kode_kategori, nama_menu, deskripsi, harga, stok, gambar, created_at, update_at) " +
+                         "VALUES('" + txt_kode_menu.getText() + "', " +
+                         "'" + session.id_user + "', " +
+                         "'" + combo_kode_kategori.getSelectedItem() + "', " +
+                         "'" + txt_nama_menu.getText() + "', " +
+                         "'" + txt_deskripsi.getText() + "', " +
+                         "'" + txt_harga.getText() + "', " +
+                         "'" + txt_stok.getText() + "', " +
+                         "'" + namaFileGambar + "', " +
+                         "'" + waktuSekarang + "', " +
+                         "'" + waktuSekarang + "')";
+
             stt.executeUpdate(SQL);
+
+            // Tambahkan ke table
             data[0] = txt_kode_menu.getText();
             data[1] = combo_kode_kategori.getSelectedItem().toString();
             data[2] = txt_nama_menu.getText();
             data[3] = txt_deskripsi.getText();
             data[4] = txt_harga.getText();
             data[5] = txt_stok.getText();
-            data[6] = txt_gambar.getText();
+            data[6] = namaFileGambar;
             tableModel.insertRow(0, data);
+
             stt.close();
             kon.close();
             membersihkan_text();
-            }
-            catch(Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
-            }
+
+            JOptionPane.showMessageDialog(null, "Data menu berhasil ditambahkan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace(); // untuk debug di console
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_tambahActionPerformed
 
@@ -628,29 +702,36 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        if((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty())|| (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty()))
-        {
+        if ((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty()) || (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty())) {
+
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
             txt_kode_menu.requestFocus();
-        }
-        else
-        {
-            try
-            {
+
+        } else {
+            try {
+                // Ambil nama file gambar dari tabel (kolom ke-6)
+                String namaGambar = tableModel.getValueAt(row, 6).toString();
+
+                // Hapus file gambar dari folder
+                File fileGambar = new File("src/gambar_menu/" + namaGambar);
+                if (fileGambar.exists()) {
+                    fileGambar.delete();
+                }
+
+                // Hapus data dari database
                 Class.forName(driver);
                 Connection kon = DriverManager.getConnection(database, user, pass);
                 Statement stt = kon.createStatement();
-                String SQL = "DELETE FROM menu "
-                        + "WHERE "
-                        + "kode_menu='"+tableModel.getValueAt(row, 0).toString()+"'";
+                String SQL = "DELETE FROM menu WHERE kode_menu='" + tableModel.getValueAt(row, 0).toString() + "'";
                 stt.executeUpdate(SQL);
+
+                // Hapus baris dari tabel
                 tableModel.removeRow(row);
                 stt.close();
                 kon.close();
                 membersihkan_text();
-            }
-            catch(Exception ex)
-            {
+
+            } catch (Exception ex) {
                 System.err.println(ex.getMessage());
             }
         }
@@ -719,6 +800,22 @@ Object tabel;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_hargaActionPerformed
 
+    private void btn_pilih_gambarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pilih_gambarActionPerformed
+        // TODO add your handling code here:
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Pilih Gambar Menu");
+        fileChooser.setFileFilter(new FileNameExtensionFilter("Gambar", "jpg", "jpeg", "png"));
+
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            pathGambar = selectedFile.getAbsolutePath();
+            namaFileGambar = selectedFile.getName();
+
+            txt_gambar.setText(namaFileGambar);
+        }
+    }//GEN-LAST:event_btn_pilih_gambarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -759,6 +856,7 @@ Object tabel;
     private javax.swing.JButton btn_edit;
     private javax.swing.JButton btn_hapus;
     private javax.swing.JButton btn_kembali;
+    private javax.swing.JButton btn_pilih_gambar;
     private javax.swing.JButton btn_tambah;
     private javax.swing.JButton btn_tampil_semua_data;
     private javax.swing.JComboBox combo_kode_kategori;
