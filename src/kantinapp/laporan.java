@@ -22,7 +22,6 @@ import java.awt.print.PrinterException;
 import javax.swing.JTable;
 import java.text.MessageFormat;
 
-
 /**
  *
  * @author MRHSCode
@@ -84,15 +83,15 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "SELECT transaksi.tanggal_transaksi, menu.nama_menu, kategori_menu.nama_kategori, transaksi.jumlah, menu.harga * transaksi.jumlah as pendapatan FROM transaksi, menu, kategori_menu WHERE transaksi.kode_menu=menu.kode_menu AND menu.kode_kategori=kategori_menu.kode_kategori AND id_user = '" + session.id_user + "'";
+            String SQL = "SELECT transaksi.tanggal_transaksi, menu.nama_menu, kategori_menu.nama_kategori, transaksi.jumlah, menu.harga * transaksi.jumlah as pendapatan FROM transaksi, menu, kategori_menu, users WHERE transaksi.kode_menu=menu.kode_menu AND menu.kode_kategori=kategori_menu.kode_kategori AND users.id = '" + session.id_user + "'";
             ResultSet res = stt.executeQuery(SQL);
             while(res.next())
             {
                 data[0] = res.getString(1);
-                data[1] = res.getString(3);
-                data[2] = res.getString(4);
-                data[3] = res.getString(5);
-                data[4] = res.getString(6);
+                data[1] = res.getString(2);
+                data[2] = res.getString(3);
+                data[3] = res.getString(4);
+                data[4] = res.getString(5);
                 tableModel.addRow(data);
             }
             res.close();
