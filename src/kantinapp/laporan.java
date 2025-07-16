@@ -55,16 +55,16 @@ Object tabel;
         return new javax.swing.table.DefaultTableModel
         (
             new Object[][] {},
-            new String [] {"kode_laporan",
-                           "Kode Menu",
-                           "tanggal",
-                           "Total Pendapatan",
-                           "Total Transaksi"}
+            new String [] {"tanggal",
+                           "Menu",
+                           "Kategori",
+                           "Jumlah Terjual",
+                           "Total Pendapatan"}
         )
         {
             boolean[] canEdit = new boolean[]
             {
-                false, false, false, false, false, false, false
+                false, false, false, false, false
             };
             
             public boolean isCellEditTable(int rowIndex, int columnIndex)
@@ -84,7 +84,7 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "select * from laporan where id_user = '" + session.id_user + "'";
+            String SQL = "SELECT transaksi.tanggal_transaksi, menu.nama_menu, kategori_menu.nama_kategori, transaksi.jumlah, menu.harga * transaksi.jumlah as pendapatan FROM transaksi, menu, kategori_menu WHERE transaksi.kode_menu=menu.kode_menu AND menu.kode_kategori=kategori_menu.kode_kategori AND id_user = '" + session.id_user + "'";
             ResultSet res = stt.executeQuery(SQL);
             while(res.next())
             {
