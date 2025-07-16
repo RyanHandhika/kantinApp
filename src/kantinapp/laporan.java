@@ -468,6 +468,12 @@ Object tabel;
 
     private void btn_excelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_excelActionPerformed
         // TODO add your handling code here:
+        try {
+            
+            
+        }catch(Exception e) {
+            
+        }
     }//GEN-LAST:event_btn_excelActionPerformed
 
     private void btn_KembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_KembaliActionPerformed
