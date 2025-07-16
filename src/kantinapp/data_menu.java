@@ -27,7 +27,7 @@ class ImageRenderer extends DefaultTableCellRenderer {
     @Override
     public void setValue(Object value) {
         if (value != null && value instanceof String) {
-            String path = "/src/gambar_menu/" + value;
+            String path = "src/gambar_menu/" + value;
             ImageIcon icon = new ImageIcon(path);
             Image img = icon.getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
             setIcon(new ImageIcon(img));
