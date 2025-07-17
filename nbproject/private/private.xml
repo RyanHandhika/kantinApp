@@ -3,7 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/NetBeansProjects/kantinApp/src/kantinapp/laporan.java</file>
+
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/data_pelanggan.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/KantinApp.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/lupa_password.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/dashboard.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/laporan.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/data_transaksi.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/session.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/authentication.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/koneksi.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/register.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/login.java</file>
+            <file>file:/E:/NetBeansProjects/kantinApp/src/kantinapp/data_menu.java</file>
         </group>
     </open-files>
 </project-private>
