@@ -129,7 +129,6 @@ Object tabel;
     
     public void membersihkan_text()
     {
-        txt_kode_menu.setText("");
         combo_kode_kategori.setSelectedItem("");
         txt_nama_menu.setText("");
         txt_deskripsi.setText("");
@@ -140,7 +139,6 @@ Object tabel;
     
     public void nonaktif_teks()
     {
-        txt_kode_menu.setEnabled(false);
         combo_kode_kategori.setEnabled(false);
         txt_nama_menu.setEnabled(false);
         txt_deskripsi.setEnabled(false);
@@ -151,7 +149,6 @@ Object tabel;
     
     public void aktif_text()
     {
-        txt_kode_menu.setEnabled(true);
         combo_kode_kategori.setEnabled(true);
         txt_nama_menu.setEnabled(true);
         txt_deskripsi.setEnabled(true);
@@ -164,7 +161,6 @@ Object tabel;
     public void tampil_field()
     {
         row = tabel_data_menu.getSelectedRow();
-        txt_kode_menu.setText(tableModel.getValueAt(row, 0).toString());
         combo_kode_kategori.setSelectedItem(tableModel.getValueAt(row, 1).toString());
         txt_nama_menu.setText(tableModel.getValueAt(row, 2).toString());
         txt_deskripsi.setText(tableModel.getValueAt(row, 3).toString());
@@ -212,14 +208,12 @@ Object tabel;
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel_data_menu = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txt_kode_menu = new javax.swing.JTextField();
         txt_nama_menu = new javax.swing.JTextField();
         txt_harga = new javax.swing.JTextField();
         txt_stok = new javax.swing.JTextField();
@@ -288,9 +282,6 @@ Object tabel;
             }
         });
         jScrollPane1.setViewportView(tabel_data_menu);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Kode Menu");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Kode Kategori");
@@ -474,41 +465,39 @@ Object tabel;
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(40, 40, 40)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 952, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(55, 55, 55)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4)
-                                        .addComponent(jLabel5))
-                                    .addGap(62, 62, 62)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(combo_kode_kategori, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2)
-                                        .addComponent(txt_nama_menu)
-                                        .addComponent(txt_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(58, 58, 58)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7))
-                                        .addComponent(jLabel6))
-                                    .addGap(41, 41, 41)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(txt_gambar)
-                                            .addGap(4, 4, 4)
-                                            .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jLabel3)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel5))
+                                        .addGap(62, 62, 62)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(combo_kode_kategori, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane2)
+                                            .addComponent(txt_nama_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(56, 56, 56)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel7))
+                                            .addComponent(jLabel6))
+                                        .addGap(41, 41, 41)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(txt_gambar)
+                                                .addGap(4, 4, 4)
+                                                .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(21, 21, 21))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 988, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(42, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -521,30 +510,36 @@ Object tabel;
                         .addGap(49, 49, 49)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txt_kode_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_nama_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel8)
-                            .addComponent(txt_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(38, 38, 38)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(txt_stok, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txt_harga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txt_gambar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btn_pilih_gambar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(77, 77, 77))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(combo_kode_kategori, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txt_nama_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
+                                .addGap(16, 16, 16)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -553,7 +548,6 @@ Object tabel;
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
-        String kode_menu = txt_kode_menu.getText();
         String kode_kategori = combo_kode_kategori.getSelectedItem().toString();
         String nama_menu = txt_nama_menu.getText();
         String deskripsi = txt_deskripsi.getText();
@@ -561,11 +555,10 @@ Object tabel;
         String stok = txt_stok.getText();
         String gambar = txt_gambar.getText();
 
-        if (kode_menu.isEmpty() || kode_kategori.isEmpty() || nama_menu.isEmpty() ||
-            deskripsi.isEmpty() || harga.isEmpty() || stok.isEmpty() || gambar.isEmpty()) 
+        if (nama_menu.isEmpty() || deskripsi.isEmpty() || harga.isEmpty() || stok.isEmpty() || gambar.isEmpty())
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_menu.requestFocus();
+            combo_kode_kategori.requestFocus();
             return;
         }
 
@@ -602,7 +595,7 @@ Object tabel;
 
             // Update ke tabel
             String[] data = new String[7];
-            data[0] = kode_menu;
+            data[0] = tableModel.getValueAt(row, 0).toString();
             data[1] = kode_kategori;
             data[2] = nama_menu;
             data[3] = deskripsi;
@@ -627,15 +620,14 @@ Object tabel;
         // TODO add your handling code here:
         String data[] = new String[7];
 
-        if (txt_kode_menu.getText().isEmpty() || 
-            txt_nama_menu.getText().isEmpty() ||
+        if (txt_nama_menu.getText().isEmpty() ||
             txt_deskripsi.getText().isEmpty() ||
-            txt_harga.getText().isEmpty() || 
+            txt_harga.getText().isEmpty() ||
             txt_stok.getText().isEmpty() ||
             txt_gambar.getText().isEmpty()) 
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_menu.requestFocus();
+            combo_kode_kategori.requestFocus();
             return;
         }
 
@@ -656,9 +648,10 @@ Object tabel;
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
             Timestamp waktuSekarang = new Timestamp(new Date().getTime());
+            String kodeUnik = kode_generator.generateKode("MN", 5);
 
             String SQL = "INSERT INTO menu(kode_menu, id_user, kode_kategori, nama_menu, deskripsi, harga, stok, gambar, created_at, update_at) " +
-                         "VALUES('" + txt_kode_menu.getText() + "', " +
+                         "VALUES('" + kodeUnik + "', " +
                          "'" + session.id_user + "', " +
                          "'" + combo_kode_kategori.getSelectedItem() + "', " +
                          "'" + txt_nama_menu.getText() + "', " +
@@ -672,7 +665,7 @@ Object tabel;
             stt.executeUpdate(SQL);
 
             // Tambahkan ke table
-            data[0] = txt_kode_menu.getText();
+            data[0] = kodeUnik;
             data[1] = combo_kode_kategori.getSelectedItem().toString();
             data[2] = txt_nama_menu.getText();
             data[3] = txt_deskripsi.getText();
@@ -702,10 +695,10 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        if ((txt_kode_menu.getText().isEmpty()) || (txt_nama_menu.getText().isEmpty()) || (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty())) {
+        if ((txt_nama_menu.getText().isEmpty()) || (txt_deskripsi.getText().isEmpty()) || (txt_harga.getText().isEmpty()) || (txt_stok.getText().isEmpty()) || (txt_gambar.getText().isEmpty())) {
 
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_menu.requestFocus();
+            combo_kode_kategori.requestFocus();
 
         } else {
             try {
@@ -760,12 +753,12 @@ Object tabel;
             while(res.next())
             {
                 data[0] = res.getString(1);
-                data[1] = res.getString(2);
-                data[2] = res.getString(3);
-                data[3] = res.getString(4);
-                data[4] = res.getString(5);
-                data[5] = res.getString(6);
-                data[6] = res.getString(7);
+                data[1] = res.getString(3);
+                data[2] = res.getString(4);
+                data[3] = res.getString(5);
+                data[4] = res.getString(6);
+                data[5] = res.getString(7);
+                data[6] = res.getString(8);
                 tableModel.addRow(data);
             }
             res.close();
@@ -862,7 +855,6 @@ Object tabel;
     private javax.swing.JComboBox combo_kode_kategori;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -880,7 +872,6 @@ Object tabel;
     private javax.swing.JTextArea txt_deskripsi;
     private javax.swing.JTextField txt_gambar;
     private javax.swing.JTextField txt_harga;
-    private javax.swing.JTextField txt_kode_menu;
     private javax.swing.JTextField txt_nama_menu;
     private javax.swing.JTextField txt_stok;
     // End of variables declaration//GEN-END:variables
