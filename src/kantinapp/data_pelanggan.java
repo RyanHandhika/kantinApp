@@ -95,7 +95,6 @@ Object tabel;
     
     public void membersihkan_text()
     {
-        txt_kode_pelanggan.setText("");
         txt_nama.setText("");
         txt_telp.setText("");
         txt_alamat.setText("");
@@ -103,7 +102,6 @@ Object tabel;
     
     public void nonaktif_teks()
     {
-        txt_kode_pelanggan.setEnabled(false);
         txt_nama.setEnabled(false);
         txt_telp.setEnabled(false);
         txt_alamat.setEnabled(false);
@@ -111,7 +109,6 @@ Object tabel;
     
     public void aktif_text()
     {
-        txt_kode_pelanggan.setEnabled(true);
         txt_nama.setEnabled(true);
         txt_telp.setEnabled(true);
         txt_alamat.setEnabled(true);
@@ -121,7 +118,6 @@ Object tabel;
     public void tampil_field()
     {
         row = tabel_pelanggan.getSelectedRow();
-        txt_kode_pelanggan.setText(tableModel.getValueAt(row, 0).toString());
         txt_nama.setText(tableModel.getValueAt(row, 1).toString());
         txt_telp.setText(tableModel.getValueAt(row, 2).toString());
         txt_alamat.setText(tableModel.getValueAt(row, 3).toString());
@@ -156,8 +152,6 @@ Object tabel;
         btn_tampil_semua_data = new javax.swing.JButton();
         btn_cari = new javax.swing.JButton();
         txt_cari = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txt_kode_pelanggan = new javax.swing.JTextField();
         txt_telp = new javax.swing.JTextField();
         txt_nama = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -358,9 +352,6 @@ Object tabel;
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Kode Pelanggan");
-
         txt_alamat.setColumns(20);
         txt_alamat.setRows(5);
         jScrollPane1.setViewportView(txt_alamat);
@@ -386,23 +377,19 @@ Object tabel;
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txt_nama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txt_kode_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txt_telp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addGap(39, 39, 39)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4))
+                                .addGap(90, 90, 90)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txt_telp, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
+                                .addComponent(jLabel5)
+                                .addGap(39, 39, 39)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2))
                         .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
@@ -411,25 +398,24 @@ Object tabel;
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_kode_pelanggan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel2)
+                            .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_telp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
+                            .addComponent(jLabel4)
+                            .addComponent(txt_telp, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -437,7 +423,7 @@ Object tabel;
 
     private void btn_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_editActionPerformed
         // TODO add your handling code here:
-        String kode_pelanggan = txt_kode_pelanggan.getText();
+        String kode_pelanggan = tableModel.getValueAt(row, 0).toString();
         String nama = txt_nama.getText();
         String telp = txt_telp.getText();
         String alamat = txt_alamat.getText();
@@ -445,7 +431,7 @@ Object tabel;
         if((kode_pelanggan.isEmpty()) || (nama.isEmpty()) || (telp.isEmpty()) || (alamat.isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "data tidak boleh kosong, silahkan dilengkapi");
-            txt_kode_pelanggan.requestFocus();
+            txt_nama.requestFocus();
         }
         else
         {
@@ -461,7 +447,7 @@ Object tabel;
                         + "`telp`='"+telp+"',"
                         + "`alamat`='"+alamat+"' "
                         + "WHERE "
-                        + "`kode_pelanggan`='"+tableModel.getValueAt(row, 0).toString()+"';";
+                        + "`kode_pelanggan`='"+kode_pelanggan+"';";
                 stt.executeUpdate(SQL);
                 data[0] = kode_pelanggan;
                 data[1] = nama;
@@ -482,10 +468,10 @@ Object tabel;
 
     private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
         // TODO add your handling code here:
-        if((txt_kode_pelanggan.getText().isEmpty()) || (txt_nama.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
+        if((txt_nama.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_pelanggan.requestFocus();
+            txt_nama.requestFocus();
         }
         else
         {
@@ -514,10 +500,10 @@ Object tabel;
         // TODO add your handling code here:
         String data[] = new String[4];
         
-        if((txt_kode_pelanggan.getText().isEmpty()) || (txt_nama.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
+        if((txt_nama.getText().isEmpty()) || (txt_telp.getText().isEmpty())|| (txt_alamat.getText().isEmpty()))
         {
             JOptionPane.showMessageDialog(null, "Data tidak boleh kosong, silahkan lengkapi");
-            txt_kode_pelanggan.requestFocus();
+            txt_nama.requestFocus();
         }
         else
         {
@@ -526,15 +512,17 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
+            String kodeUnik = kode_generator.generate_kode("PL", 5);
+            
             String SQL = "INSERT INTO pelanggan(kode_pelanggan," + "id_user," + "nama," + "telp," + "alamat)"
                     + "VALUES"
-                    + "( '" + txt_kode_pelanggan.getText() + "', "
+                    + "( '" + kodeUnik + "', "
                     + "'"+ session.id_user + "', "
                     + "'"+ txt_nama.getText() + "', "
                     + "'" + txt_telp.getText() + "', "
                     + "'" + txt_alamat.getText() + "')";
             stt.executeUpdate(SQL);
-            data[0] = txt_kode_pelanggan.getText();
+            data[0] = kodeUnik;
             data[1] = txt_nama.getText();
             data[2] = txt_telp.getText();
             data[3] = txt_alamat.getText();
@@ -662,7 +650,6 @@ Object tabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
@@ -674,7 +661,6 @@ Object tabel;
     private javax.swing.JTable tabel_pelanggan;
     private javax.swing.JTextArea txt_alamat;
     private javax.swing.JTextField txt_cari;
-    private javax.swing.JTextField txt_kode_pelanggan;
     private javax.swing.JTextField txt_nama;
     private javax.swing.JTextField txt_telp;
     // End of variables declaration//GEN-END:variables
