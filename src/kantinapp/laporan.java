@@ -474,7 +474,7 @@ Object tabel;
             Class.forName(driver);
             Connection kon = DriverManager.getConnection(database, user, pass);
             Statement stt = kon.createStatement();
-            String SQL = "SELECT * FROM laporan WHERE kode_laporan="
+            String SQL = "SELECT * FROM laporan WHERE nama_menu="
                     + "'" +txt_cari.getText()+ "'";
             ResultSet res = stt.executeQuery(SQL);
             while(res.next())
